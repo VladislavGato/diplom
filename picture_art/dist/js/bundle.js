@@ -130,14 +130,14 @@ module.exports = mainSlider;
 
 /***/ }),
 
-/***/ "./src/js/parts/modal.js":
-/*!*******************************!*\
-  !*** ./src/js/parts/modal.js ***!
-  \*******************************/
+/***/ "./src/js/parts/modalPopupConsultation.js":
+/*!************************************************!*\
+  !*** ./src/js/parts/modalPopupConsultation.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-let modal = () => {
+let modalPopupConsultation = () => {
 	// Вызывается модальное окно при нажатии на "Подробнее об услуге"
 
 	// Модальное окно popup-consultation
@@ -173,7 +173,7 @@ let modal = () => {
 
 };
 
-module.exports = modal;
+module.exports = modalPopupConsultation;
 
 /***/ }),
 
@@ -191,7 +191,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	let mainSlider = __webpack_require__(/*! ./parts/mainSlider.js */ "./src/js/parts/mainSlider.js"),
 
 	// Вызывается модальное окно при нажатии на "Подробнее об услуге"
-		modal = __webpack_require__(/*! ./parts/modal.js */ "./src/js/parts/modal.js");
+		modalPopupConsultation = __webpack_require__(/*! ./parts/modalPopupConsultation.js */ "./src/js/parts/modalPopupConsultation.js");
 
 
 
@@ -204,7 +204,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 	mainSlider();
-	modal();
+	modalPopupConsultation();
 
 
 	

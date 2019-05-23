@@ -1,4 +1,4 @@
-let modal = () => {
+let modalPopupConsultation = () => {
 	// Вызывается модальное окно при нажатии на "Подробнее об услуге"
 
 	// Модальное окно popup-consultation
@@ -34,4 +34,4 @@ let modal = () => {
 
 };
 
-module.exports = modal;
+module.exports = modalPopupConsultation;
