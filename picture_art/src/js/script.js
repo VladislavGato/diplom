@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	let mainSlider = require('./parts/mainSlider.js'),
 
 	// Вызывается модальное окно при нажатии на "Подробнее об услуге"
-		modalPopupConsultation = require('./parts/modalPopupConsultation.js');
+		modal = require('./parts/modal.js');
 
 
 
@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 	mainSlider();
-	modalPopupConsultation();
+	modal();
 
 
 	
