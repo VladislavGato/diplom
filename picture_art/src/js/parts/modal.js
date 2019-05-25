@@ -14,18 +14,20 @@ let modal = () => {
 	// функция скрывает картинку с подарком
 	let hidenGift = (statusGift) => {
 			giftPic.style.display = statusGift;
-			giftOn =0;
+			giftOn = 0;
 	};
+
+
 
 
 	// модальное окно которое сейчас открыто
 	let overlayOn;
 
   //функция модального окна
-  let bindModal = (btn, overlay, overlayStatus, overflowStatus) => {
+  let bindModal = (btn, overlay, overlayStatus, overflowStatus, closeBtn) => {
 		overlayOn = overlay;
-		// console.log(btn);
-		// console.log(overlayOn);
+		console.log(btn);
+		console.log(overlayOn);
 
 		// вызов нужного модального окна
 		overlay.style.display = overlayStatus;
@@ -38,6 +40,13 @@ let modal = () => {
 	
 		// отключает "вызов окна через 60 сек"
 		statusСountdown = 0;
+
+
+		//открытие подарка в конце страницы
+		giftFooter = 0;
+		if (btn == 1 || closeBtn == 1) (giftFooter = 1);
+
+
 	};
 	
 
@@ -47,19 +56,19 @@ let modal = () => {
 		let target = e.target;	
 
 		// Должно вызываться модальное окно (класс popup-consultation) [ окно не прокручивается ]
-		(target.classList.contains('button-consultation')) ? bindModal(target, popupConsultation, 'block', 'hidden'): '';
+		(target.classList.contains('button-consultation')) ? bindModal(target, popupConsultation, 'block', 'hidden', ''): '';
 
 		// должно появляться модальное окно (popup-gift)
-		(target.classList.contains('fixed-gift')) ? bindModal(target, popupGift, 'block', 'hidden'): '';
+		(target.classList.contains('fixed-gift')) ? bindModal(target, popupGift, 'block', 'hidden', ''): '';
 		// 
 
 		// Должно вызываться модальное окно (popup-design)
-		(target.classList.contains('button-design')) ? bindModal(target, popupDesign, 'block', 'hidden'): '';
+		(target.classList.contains('button-design')) ? bindModal(target, popupDesign, 'block', 'hidden', ''): '';
 
 
 		// При нажатии на крестик или подложку открытого модального окна
 		//  - закрывается открытое модальное окно.
-		(target.classList.contains('popup-close') || target == overlayOn) ? bindModal(target, overlayOn, 'none', ''): '';
+		(target.classList.contains('popup-close') || target == overlayOn) ? bindModal(target, overlayOn, 'none', '', 1): '';
 	});
 	
 	
@@ -68,13 +77,16 @@ let modal = () => {
 	// откроется модальное окно по истечении 60 секунд если ни на что не нажали
 	let countdown = () => {
 		setTimeout(() => {
-			(statusСountdown == 1) ? bindModal("", popupConsultation, 'block', 'hidden'): ''
+			(statusСountdown == 1) ? bindModal("1", popupConsultation, 'block', 'hidden', ''): ''
 		}, 6000);
 	};
 	countdown();
 
 
-	// 
+	
+	
+	// статус подарка
+	let giftFooter = 1;
 	let giftOn = 1;
 	// Модальное окно при пролистывании до конца страницы
 	window.onscroll = () => {
@@ -84,7 +96,7 @@ let modal = () => {
 			document.body.offsetHeight, document.documentElement.offsetHeight,
 			document.body.clientHeight, document.documentElement.clientHeight
 		);
-		if (window.scrollY + 1 >= scrollHeight - innerHeight && giftOn == 1) bindModal('', popupGift, 'block', 'hidden');
+		if (window.scrollY + 1 >= scrollHeight - innerHeight && giftOn == 1 && giftFooter == 1) bindModal('', popupGift, 'block', 'hidden', '');
 	};
 
 
