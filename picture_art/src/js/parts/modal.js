@@ -78,13 +78,13 @@ let modal = () => {
 	let countdown = () => {
 		setTimeout(() => {
 			(statusСountdown == 1) ? bindModal("1", popupConsultation, 'block', 'hidden', ''): ''
-		}, 6000);
+		}, 60000);
 	};
 	countdown();
 
 
 	
-	
+
 	// статус подарка
 	let giftFooter = 1;
 	let giftOn = 1;

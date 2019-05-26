@@ -86,6 +86,22 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/parts/feedbackSlider.js":
+/*!****************************************!*\
+  !*** ./src/js/parts/feedbackSlider.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+let feedbackSlider = () => {
+
+
+};
+
+module.exports = feedbackSlider;
+
+/***/ }),
+
 /***/ "./src/js/parts/mainSlider.js":
 /*!************************************!*\
   !*** ./src/js/parts/mainSlider.js ***!
@@ -95,38 +111,75 @@
 
 let mainSlider = () => {
 
-  //переменная которая отвечает за то, какой слайд показывается
-	let slideIndex = 2;
+  // //переменная которая отвечает за то, какой слайд показывается
+	let slideIndex = 1;
 
-  // сами слайды. получаем все слайды
+  // // сами слайды. получаем все слайды
   let slides = document.querySelectorAll('.main-slider-item');
 
-
+	// технические переменный отвечающие за показ слайдов
+	let ss = 0;
+	let pp = 0;
   let showSlides = (n) => {
-
-		(n > slides.length) ? slideIndex = 1 : '';
-
+		(n > slides.length - 1) ? slideIndex = 0 : '';
 		// все слайды скроются
 		slides.forEach((item) => item.style.display = 'none');
-    // покажем тот слайд который нам нужен
-    slides[slideIndex - 1].style.display = 'block';
+		// console.log(pp);
+
+		if (pp > 0) {
+			// покажем тот слайд который нам нужен
+			(slideIndex == 0) ? (ss = 1) : (ss = 0);
+
+			slides[ss].style.display = 'block';
+			slides[ss].classList.add('animated', 'fadeOutDown');
+
+			slides[ss].addEventListener('animationend', function () {
+				slides[ss].style.display = 'none';
+				slides[ss].classList.remove('animated', 'fadeOutDown');
+			});
+
+			slides[ss].addEventListener('animationend', function () {
+				slides[slideIndex].style.display = 'block';
+				slides[slideIndex].classList.add('animated', 'fadeInDown');
+			});
+		} else {
+			(slideIndex == 0) ? (ss = 0) : (ss = 1);
+
+			slides[ss].classList.add('animated', );
+			slides[ss].style.display = 'block';
+
+			slides[ss].addEventListener('animationend', function () {
+				slides[ss].style.display = 'none';
+				slides[ss].classList.remove('animated', 'fadeOutDown');
+			});
+
+			slides[ss].addEventListener('animationend', function () {
+				slides[slideIndex].style.display = 'block';
+				slides[slideIndex].classList.add('animated', 'fadeInDown');
+			});
+		}
+		
+		pp +=1;
 	};
 	showSlides(slideIndex);
 
-	// 
+
+	// прибавляет
 	let plusSlides = () => {
 		showSlides(slideIndex += 1);
 	};
 
-	// 
+
+	// через интервал запускается смена фото
 	let	timerSlades = () => {
-		setInterval(plusSlides, 4000);
+		setInterval(plusSlides, 10000);
 	};
 	timerSlades();
 
 };
 
 module.exports = mainSlider;
+
 
 /***/ }),
 
@@ -217,13 +270,13 @@ let modal = () => {
 	let countdown = () => {
 		setTimeout(() => {
 			(statusСountdown == 1) ? bindModal("1", popupConsultation, 'block', 'hidden', ''): ''
-		}, 6000);
+		}, 60000);
 	};
 	countdown();
 
 
 	
-	
+
 	// статус подарка
 	let giftFooter = 1;
 	let giftOn = 1;
@@ -258,13 +311,15 @@ window.addEventListener('DOMContentLoaded', () => {
 	// слайдер на первом экране
 	let mainSlider = __webpack_require__(/*! ./parts/mainSlider.js */ "./src/js/parts/mainSlider.js"),
 	// Вызывается модальное окно при нажатии на "Подробнее об услуге"
-		modal = __webpack_require__(/*! ./parts/modal.js */ "./src/js/parts/modal.js");
+		modal = __webpack_require__(/*! ./parts/modal.js */ "./src/js/parts/modal.js"),
+		feedbackSlider = __webpack_require__(/*! ./parts/feedbackSlider.js */ "./src/js/parts/feedbackSlider.js");
 
 
 
 
 	mainSlider();
 	modal();
+	feedbackSlider();
 
 });
 
