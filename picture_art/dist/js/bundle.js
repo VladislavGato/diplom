@@ -95,6 +95,88 @@
 
 let feedbackSlider = () => {
 
+	//переменная которая отвечает за то, какой слайд показывается
+	let feedbackSlideIndex = 1,
+
+	// сами слайды. получаем все слайды
+		feedbackSlides = document.querySelectorAll('.feedback-slider-item'),
+	// элементы навигации, стрелочки ВПЕРЕД и НАЗАД
+		mainPprevBtn = document.querySelector('.main-prev-btn'),
+		mainNextBtn = document.querySelector('.main-next-btn');
+
+	//
+
+
+	let showFeedbackSlides = (n) => {
+
+		if (n > feedbackSlides.length) {
+			feedbackSlideIndex = 1;
+		}
+
+		if (n < 1) {
+			feedbackSlideIndex = feedbackSlides.length;
+		}
+
+		feedbackSlides.forEach((item) => item.style.display = 'none');
+		// //     ! старый аналогичный способ !
+		// for (let i = 0; i < feedbackSlides.length; i++) {
+		//     feedbackSlides[i].style.display = 'none';
+		// }
+
+		// покажем тот слайд который нам нужен
+		feedbackSlides[feedbackSlideIndex - 1].style.display = 'block';
+
+	};
+
+	showFeedbackSlides(feedbackSlideIndex);
+
+	// функция которая увеличивает наш параметр slideIndex
+	let plusFeedbackSlides = (n) => {
+		showFeedbackSlides(feedbackSlideIndex += n);
+	};
+
+	// // функция которая определяет текущий слайд и устанавливает его
+	// let currentFeedbackSlide = (n) => {
+	// 	showFeedbackSlides(feedbackSlideIndex = n);
+	// }
+
+	// кнопки стрелочка назад и стрелочка вперед
+	mainPprevBtn.addEventListener('click', () => {
+		plusFeedbackSlides(-1);
+	});
+	mainNextBtn.addEventListener('click', () => {
+		plusFeedbackSlides(1);
+	});
+
+	// slideInLeft
+	// slideInRight
+
+	// slideOutLeft
+	// slideOutRight
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 };
 
@@ -112,73 +194,156 @@ module.exports = feedbackSlider;
 let mainSlider = () => {
 
   // //переменная которая отвечает за то, какой слайд показывается
-	let slideIndex = 1;
+	let mainSlideIndex = 1;
 
   // // сами слайды. получаем все слайды
-  let slides = document.querySelectorAll('.main-slider-item');
+  let mainSlides = document.querySelectorAll('.main-slider-item');
 
 	// технические переменный отвечающие за показ слайдов
 	let ss = 0;
 	let pp = 0;
-  let showSlides = (n) => {
-		(n > slides.length - 1) ? slideIndex = 0 : '';
+  let showMainSlides = (n) => {
+		// console.log('1');
+		(n > mainSlides.length - 1) ? mainSlideIndex = 0: '';
 		// все слайды скроются
-		slides.forEach((item) => item.style.display = 'none');
+		mainSlides.forEach((item) => item.style.display = 'none');
 		// console.log(pp);
 
 		if (pp > 0) {
 			// покажем тот слайд который нам нужен
-			(slideIndex == 0) ? (ss = 1) : (ss = 0);
+			(mainSlideIndex == 0) ? (ss = 1) : (ss = 0);
 
-			slides[ss].style.display = 'block';
-			slides[ss].classList.add('animated', 'fadeOutDown');
+			mainSlides[ss].style.display = 'block';
+			mainSlides[ss].classList.add('animated', 'fadeOutDown');
 
-			slides[ss].addEventListener('animationend', function () {
-				slides[ss].style.display = 'none';
-				slides[ss].classList.remove('animated', 'fadeOutDown');
+			mainSlides[ss].addEventListener('animationend', function () {
+				mainSlides[ss].style.display = 'none';
+				mainSlides[ss].classList.remove('animated', 'fadeOutDown');
 			});
 
-			slides[ss].addEventListener('animationend', function () {
-				slides[slideIndex].style.display = 'block';
-				slides[slideIndex].classList.add('animated', 'fadeInDown');
+			mainSlides[ss].addEventListener('animationend', function () {
+				mainSlides[mainSlideIndex].style.display = 'block';
+				mainSlides[mainSlideIndex].classList.add('animated', 'fadeInDown');
 			});
 		} else {
-			(slideIndex == 0) ? (ss = 0) : (ss = 1);
+			(mainSlideIndex == 0) ? (ss = 0) : (ss = 1);
 
-			slides[ss].classList.add('animated', );
-			slides[ss].style.display = 'block';
+			mainSlides[ss].classList.add('animated', );
+			mainSlides[ss].style.display = 'block';
 
-			slides[ss].addEventListener('animationend', function () {
-				slides[ss].style.display = 'none';
-				slides[ss].classList.remove('animated', 'fadeOutDown');
+			mainSlides[ss].addEventListener('animationend', function () {
+				mainSlides[ss].style.display = 'none';
+				mainSlides[ss].classList.remove('animated', 'fadeOutDown');
 			});
 
-			slides[ss].addEventListener('animationend', function () {
-				slides[slideIndex].style.display = 'block';
-				slides[slideIndex].classList.add('animated', 'fadeInDown');
+			mainSlides[ss].addEventListener('animationend', function () {
+				mainSlides[mainSlideIndex].style.display = 'block';
+				mainSlides[mainSlideIndex].classList.add('animated', 'fadeInDown');
 			});
 		}
 		
 		pp +=1;
+		// console.log('2')
 	};
-	showSlides(slideIndex);
+	showMainSlides(mainSlideIndex);
 
 
 	// прибавляет
-	let plusSlides = () => {
-		showSlides(slideIndex += 1);
+	let plusMainSlides = () => {
+		// console.log('слайд+');
+		showMainSlides(mainSlideIndex += 1);
 	};
 
 
 	// через интервал запускается смена фото
-	let	timerSlades = () => {
-		setInterval(plusSlides, 10000);
+	let timerMainSlades = () => {
+		setInterval(plusMainSlides, 10000);
 	};
-	timerSlades();
+	timerMainSlades();
 
 };
 
 module.exports = mainSlider;
+
+
+
+
+
+
+
+// let mainSlider = () => {
+
+// 	// //переменная которая отвечает за то, какой слайд показывается
+// 	let slideIndex = 1;
+
+// 	// // сами слайды. получаем все слайды
+// 	let slides = document.querySelectorAll('.main-slider-item');
+
+// 	// технические переменный отвечающие за показ слайдов
+// 	let ss = 0;
+// 	let pp = 0;
+// 	let showSlides = (n) => {
+// 		// console.log('1');
+// 		(n > slides.length - 1) ? slideIndex = 0: '';
+// 		// все слайды скроются
+// 		slides.forEach((item) => item.style.display = 'none');
+// 		// console.log(pp);
+
+// 		if (pp > 0) {
+// 			// покажем тот слайд который нам нужен
+// 			(slideIndex == 0) ? (ss = 1) : (ss = 0);
+
+// 			slides[ss].style.display = 'block';
+// 			slides[ss].classList.add('animated', 'fadeOutDown');
+
+// 			slides[ss].addEventListener('animationend', function () {
+// 				slides[ss].style.display = 'none';
+// 				slides[ss].classList.remove('animated', 'fadeOutDown');
+// 			});
+
+// 			slides[ss].addEventListener('animationend', function () {
+// 				slides[slideIndex].style.display = 'block';
+// 				slides[slideIndex].classList.add('animated', 'fadeInDown');
+// 			});
+// 		} else {
+// 			(slideIndex == 0) ? (ss = 0) : (ss = 1);
+
+// 			slides[ss].classList.add('animated', );
+// 			slides[ss].style.display = 'block';
+
+// 			slides[ss].addEventListener('animationend', function () {
+// 				slides[ss].style.display = 'none';
+// 				slides[ss].classList.remove('animated', 'fadeOutDown');
+// 			});
+
+// 			slides[ss].addEventListener('animationend', function () {
+// 				slides[slideIndex].style.display = 'block';
+// 				slides[slideIndex].classList.add('animated', 'fadeInDown');
+// 			});
+// 		}
+
+// 		pp += 1;
+// 		// console.log('2')
+// 	};
+// 	showSlides(slideIndex);
+
+
+// 	// прибавляет
+// 	let plusSlides = () => {
+// 		// console.log('слайд+');
+// 		showSlides(slideIndex += 1);
+// 	};
+
+
+// 	// через интервал запускается смена фото
+// 	let timerSlades = () => {
+// 		setInterval(plusSlides, 10000);
+// 	};
+// 	timerSlades();
+
+// };
+
+// module.exports = mainSlider;
 
 
 /***/ }),
