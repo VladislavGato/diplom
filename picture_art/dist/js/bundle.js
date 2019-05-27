@@ -86,6 +86,68 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/parts/calc.js":
+/*!******************************!*\
+  !*** ./src/js/parts/calc.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+let calc = () => {
+
+	//  селекты калькулятора обязательный
+	let size = document.getElementById('size'),
+			material = document.getElementById('material'),
+	// селектор опциональный
+			options = document.getElementById('options'),
+	// поле ввода промокода 
+			promocode = document.querySelector('.promocode'),
+	// итоговвая цена
+			calcPrice = document.querySelector('.calc-price');
+
+	
+
+	document.body.addEventListener('select', e => {
+		let target = e.target;
+		// console.log(1);
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};
+
+module.exports = calc;
+
+/***/ }),
+
 /***/ "./src/js/parts/feedbackSlider.js":
 /*!****************************************!*\
   !*** ./src/js/parts/feedbackSlider.js ***!
@@ -292,7 +354,9 @@ let modal = () => {
 		popupDesign = document.querySelector('.popup-design');
 	// 
 
-
+	// статус подарка
+	let giftFooter = 1;
+	let giftOn = 1;
 
 	// функция скрывает картинку с подарком
 	let hidenGift = (statusGift) => {
@@ -327,7 +391,7 @@ let modal = () => {
 
 		//открытие подарка в конце страницы
 		giftFooter = 0;
-		if (btn == 1 || closeBtn == 1) (giftFooter = 1);
+		// if (btn == 1 || closeBtn == 1) (giftFooter = 1);
 
 
 	};
@@ -337,6 +401,11 @@ let modal = () => {
   //событие при клике
   document.body.addEventListener('click', (e) => {
 		let target = e.target;	
+		// console.log(giftFooter);
+		// проверка на нажатие кнопок для отмены подарка
+		(target.tagName == 'BUTTON' || target.tagName == 'A' || target.tagName == 'SELECT' || target.tagName == 'LI' || target.tagName == 'INPUT' || target.classList.contains('burger') || target.classList.contains('sizes-block') || target.classList.contains('quest')) ? giftFooter = 0 : '';
+
+
 
 		// Должно вызываться модальное окно (класс popup-consultation) [ окно не прокручивается ]
 		(target.classList.contains('button-consultation')) ? bindModal(target, popupConsultation, 'block', 'hidden', ''): '';
@@ -366,11 +435,8 @@ let modal = () => {
 	countdown();
 
 
-	
 
-	// статус подарка
-	let giftFooter = 1;
-	let giftOn = 1;
+
 	// Модальное окно при пролистывании до конца страницы
 	window.onscroll = () => {
 		// Высота с учетом прокрутки:
@@ -403,7 +469,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	let mainSlider = __webpack_require__(/*! ./parts/mainSlider.js */ "./src/js/parts/mainSlider.js"),
 	// Вызывается модальное окно при нажатии на "Подробнее об услуге"
 		modal = __webpack_require__(/*! ./parts/modal.js */ "./src/js/parts/modal.js"),
-		feedbackSlider = __webpack_require__(/*! ./parts/feedbackSlider.js */ "./src/js/parts/feedbackSlider.js");
+		feedbackSlider = __webpack_require__(/*! ./parts/feedbackSlider.js */ "./src/js/parts/feedbackSlider.js"),
+		calc = __webpack_require__(/*! ./parts/calc.js */ "./src/js/parts/calc.js");
 
 
 
@@ -411,6 +478,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	mainSlider();
 	modal();
 	feedbackSlider();
+	calc();
 
 });
 

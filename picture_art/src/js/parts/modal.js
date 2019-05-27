@@ -9,7 +9,9 @@ let modal = () => {
 		popupDesign = document.querySelector('.popup-design');
 	// 
 
-
+	// статус подарка
+	let giftFooter = 1;
+	let giftOn = 1;
 
 	// функция скрывает картинку с подарком
 	let hidenGift = (statusGift) => {
@@ -44,7 +46,7 @@ let modal = () => {
 
 		//открытие подарка в конце страницы
 		giftFooter = 0;
-		if (btn == 1 || closeBtn == 1) (giftFooter = 1);
+		// if (btn == 1 || closeBtn == 1) (giftFooter = 1);
 
 
 	};
@@ -54,6 +56,11 @@ let modal = () => {
   //событие при клике
   document.body.addEventListener('click', (e) => {
 		let target = e.target;	
+		// console.log(giftFooter);
+		// проверка на нажатие кнопок для отмены подарка
+		(target.tagName == 'BUTTON' || target.tagName == 'A' || target.tagName == 'SELECT' || target.tagName == 'LI' || target.tagName == 'INPUT' || target.classList.contains('burger') || target.classList.contains('sizes-block') || target.classList.contains('quest')) ? giftFooter = 0 : '';
+
+
 
 		// Должно вызываться модальное окно (класс popup-consultation) [ окно не прокручивается ]
 		(target.classList.contains('button-consultation')) ? bindModal(target, popupConsultation, 'block', 'hidden', ''): '';
@@ -83,11 +90,8 @@ let modal = () => {
 	countdown();
 
 
-	
 
-	// статус подарка
-	let giftFooter = 1;
-	let giftOn = 1;
+
 	// Модальное окно при пролистывании до конца страницы
 	window.onscroll = () => {
 		// Высота с учетом прокрутки:
