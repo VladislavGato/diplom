@@ -98,84 +98,85 @@ let feedbackSlider = () => {
 	//переменная которая отвечает за то, какой слайд показывается
 	let feedbackSlideIndex = 1,
 
+		way = 0,
+
 	// сами слайды. получаем все слайды
 		feedbackSlides = document.querySelectorAll('.feedback-slider-item'),
 	// элементы навигации, стрелочки ВПЕРЕД и НАЗАД
 		mainPprevBtn = document.querySelector('.main-prev-btn'),
 		mainNextBtn = document.querySelector('.main-next-btn');
-
 	//
 
+	let pastPicture = 3;
 
-	let showFeedbackSlides = (n) => {
+	let showFeedbackSlides = (n, way) => {
+		// console.log(n);
+		// console.log(way);
+
 
 		if (n > feedbackSlides.length) {
 			feedbackSlideIndex = 1;
 		}
+		// console.log(feedbackSlideIndex);
 
 		if (n < 1) {
 			feedbackSlideIndex = feedbackSlides.length;
 		}
+		let feedbackSlideId = feedbackSlideIndex - 1;
 
+		// console.log(' - - - - - - - - ');
+		// console.log('текущий № ' + feedbackSlideIndex);
+		// console.log('текущий id ' + (feedbackSlideIndex - 1));
+		// console.log('-прошлый № ' + (pastPicture));
+		// console.log('-прошлый id ' + (pastPicture - 1));
+
+		// скроем все слайды
 		feedbackSlides.forEach((item) => item.style.display = 'none');
-		// //     ! старый аналогичный способ !
-		// for (let i = 0; i < feedbackSlides.length; i++) {
-		//     feedbackSlides[i].style.display = 'none';
-		// }
-
+		
 		// покажем тот слайд который нам нужен
-		feedbackSlides[feedbackSlideIndex - 1].style.display = 'block';
+		// feedbackSlides[feedbackSlideIndex - 1].style.display = 'block';
+		// console.log(feedbackSlides);
 
+		if (way == 0) {
+			console.log('первый заход - 0');
+			feedbackSlides[feedbackSlideIndex - 1].style.display = 'block';
+
+		} else if (way == 2) {
+			console.log('ВПЕРЁД --> 2');
+			feedbackSlides[feedbackSlideId].classList.remove('animated', 'fadeInLeft');
+			feedbackSlides[feedbackSlideIndex - 1].style.display = 'block';
+			feedbackSlides[feedbackSlideIndex - 1].classList.add('animated', 'fadeInRight');
+
+		} else {
+			console.log('НАЗАД <-- 1');
+			feedbackSlides[feedbackSlideId].classList.remove('animated', 'fadeInRight');
+			feedbackSlides[feedbackSlideIndex - 1].style.display = 'block';
+			feedbackSlides[feedbackSlideIndex - 1].classList.add('animated', 'fadeInLeft');
+		}
+
+
+
+
+		pastPicture = feedbackSlideIndex;
 	};
-
-	showFeedbackSlides(feedbackSlideIndex);
+	showFeedbackSlides(feedbackSlideIndex, way);
 
 	// функция которая увеличивает наш параметр slideIndex
-	let plusFeedbackSlides = (n) => {
-		showFeedbackSlides(feedbackSlideIndex += n);
+	let plusFeedbackSlides = (n, way) => {
+		showFeedbackSlides((feedbackSlideIndex += n), way);
 	};
 
-	// // функция которая определяет текущий слайд и устанавливает его
-	// let currentFeedbackSlide = (n) => {
-	// 	showFeedbackSlides(feedbackSlideIndex = n);
-	// }
-
-	// кнопки стрелочка назад и стрелочка вперед
 	mainPprevBtn.addEventListener('click', () => {
-		plusFeedbackSlides(-1);
+		plusFeedbackSlides(-1, 1);
 	});
+
 	mainNextBtn.addEventListener('click', () => {
-		plusFeedbackSlides(1);
+		plusFeedbackSlides(1, 2);
 	});
 
-	// slideInLeft
-	// slideInRight
-
-	// slideOutLeft
-	// slideOutRight
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	setInterval(() => {
+		plusFeedbackSlides(1, 2);
+	}, 10000);
 
 
 };
@@ -202,11 +203,16 @@ let mainSlider = () => {
 	// технические переменный отвечающие за показ слайдов
 	let ss = 0;
 	let pp = 0;
+
+
+
   let showMainSlides = (n) => {
-		// console.log('1');
+		// console.log(n);
 		(n > mainSlides.length - 1) ? mainSlideIndex = 0: '';
 		// все слайды скроются
 		mainSlides.forEach((item) => item.style.display = 'none');
+		// console.log(mainSlideIndex);
+
 		// console.log(pp);
 
 		if (pp > 0) {
@@ -257,93 +263,13 @@ let mainSlider = () => {
 
 	// через интервал запускается смена фото
 	let timerMainSlades = () => {
-		setInterval(plusMainSlides, 10000);
+		setInterval(plusMainSlides, 4000);
 	};
 	timerMainSlades();
 
 };
 
 module.exports = mainSlider;
-
-
-
-
-
-
-
-// let mainSlider = () => {
-
-// 	// //переменная которая отвечает за то, какой слайд показывается
-// 	let slideIndex = 1;
-
-// 	// // сами слайды. получаем все слайды
-// 	let slides = document.querySelectorAll('.main-slider-item');
-
-// 	// технические переменный отвечающие за показ слайдов
-// 	let ss = 0;
-// 	let pp = 0;
-// 	let showSlides = (n) => {
-// 		// console.log('1');
-// 		(n > slides.length - 1) ? slideIndex = 0: '';
-// 		// все слайды скроются
-// 		slides.forEach((item) => item.style.display = 'none');
-// 		// console.log(pp);
-
-// 		if (pp > 0) {
-// 			// покажем тот слайд который нам нужен
-// 			(slideIndex == 0) ? (ss = 1) : (ss = 0);
-
-// 			slides[ss].style.display = 'block';
-// 			slides[ss].classList.add('animated', 'fadeOutDown');
-
-// 			slides[ss].addEventListener('animationend', function () {
-// 				slides[ss].style.display = 'none';
-// 				slides[ss].classList.remove('animated', 'fadeOutDown');
-// 			});
-
-// 			slides[ss].addEventListener('animationend', function () {
-// 				slides[slideIndex].style.display = 'block';
-// 				slides[slideIndex].classList.add('animated', 'fadeInDown');
-// 			});
-// 		} else {
-// 			(slideIndex == 0) ? (ss = 0) : (ss = 1);
-
-// 			slides[ss].classList.add('animated', );
-// 			slides[ss].style.display = 'block';
-
-// 			slides[ss].addEventListener('animationend', function () {
-// 				slides[ss].style.display = 'none';
-// 				slides[ss].classList.remove('animated', 'fadeOutDown');
-// 			});
-
-// 			slides[ss].addEventListener('animationend', function () {
-// 				slides[slideIndex].style.display = 'block';
-// 				slides[slideIndex].classList.add('animated', 'fadeInDown');
-// 			});
-// 		}
-
-// 		pp += 1;
-// 		// console.log('2')
-// 	};
-// 	showSlides(slideIndex);
-
-
-// 	// прибавляет
-// 	let plusSlides = () => {
-// 		// console.log('слайд+');
-// 		showSlides(slideIndex += 1);
-// 	};
-
-
-// 	// через интервал запускается смена фото
-// 	let timerSlades = () => {
-// 		setInterval(plusSlides, 10000);
-// 	};
-// 	timerSlades();
-
-// };
-
-// module.exports = mainSlider;
 
 
 /***/ }),
@@ -383,8 +309,8 @@ let modal = () => {
   //функция модального окна
   let bindModal = (btn, overlay, overlayStatus, overflowStatus, closeBtn) => {
 		overlayOn = overlay;
-		console.log(btn);
-		console.log(overlayOn);
+		// console.log(btn);
+		// console.log(overlayOn);
 
 		// вызов нужного модального окна
 		overlay.style.display = overlayStatus;

@@ -26,8 +26,8 @@ let modal = () => {
   //функция модального окна
   let bindModal = (btn, overlay, overlayStatus, overflowStatus, closeBtn) => {
 		overlayOn = overlay;
-		console.log(btn);
-		console.log(overlayOn);
+		// console.log(btn);
+		// console.log(overlayOn);
 
 		// вызов нужного модального окна
 		overlay.style.display = overlayStatus;
