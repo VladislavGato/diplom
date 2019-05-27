@@ -138,17 +138,17 @@ let feedbackSlider = () => {
 		// console.log(feedbackSlides);
 
 		if (way == 0) {
-			console.log('первый заход - 0');
+			// console.log('первый заход - 0');
 			feedbackSlides[feedbackSlideIndex - 1].style.display = 'block';
 
 		} else if (way == 2) {
-			console.log('ВПЕРЁД --> 2');
+			// console.log('ВПЕРЁД --> 2');
 			feedbackSlides[feedbackSlideId].classList.remove('animated', 'fadeInLeft');
 			feedbackSlides[feedbackSlideIndex - 1].style.display = 'block';
 			feedbackSlides[feedbackSlideIndex - 1].classList.add('animated', 'fadeInRight');
 
 		} else {
-			console.log('НАЗАД <-- 1');
+			// console.log('НАЗАД <-- 1');
 			feedbackSlides[feedbackSlideId].classList.remove('animated', 'fadeInRight');
 			feedbackSlides[feedbackSlideIndex - 1].style.display = 'block';
 			feedbackSlides[feedbackSlideIndex - 1].classList.add('animated', 'fadeInLeft');
@@ -176,7 +176,7 @@ let feedbackSlider = () => {
 
 	setInterval(() => {
 		plusFeedbackSlides(1, 2);
-	}, 10000);
+	}, 12000);
 
 
 };
