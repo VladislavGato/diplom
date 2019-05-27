@@ -86,6 +86,37 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/parts/blockLoading.js":
+/*!**************************************!*\
+  !*** ./src/js/parts/blockLoading.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+let blockLoading = () => {
+	// кнопка 'Посмотреть больше стилей'
+	let buttonStyles = document.querySelector('.button-styles'),
+	// собираем все скрытые блоки со стилями
+	hiddenStyles = document.querySelectorAll('.styles-2');
+
+	// открываем все скрытые блоки
+	document.body.addEventListener('click', (e) => {
+		let target = e.target;
+		if (target == buttonStyles) {
+			hiddenStyles.forEach((item) => item.classList.remove('hidden-lg', 'hidden-md', 'hidden-sm', 'hidden-xs'));
+			// удаляем кнопку со страницы
+			buttonStyles.remove();
+		}
+
+	});
+
+
+};
+
+module.exports = blockLoading;
+
+/***/ }),
+
 /***/ "./src/js/parts/calc.js":
 /*!******************************!*\
   !*** ./src/js/parts/calc.js ***!
@@ -94,12 +125,9 @@
 /***/ (function(module, exports) {
 
 let calc = () => {
-
-	
 	//  селекты калькулятора обязательные 
 	let size = document.getElementById('size'),
 		material = document.getElementById('material'),
-
 	// селектор опциональный
 		options = document.getElementById('options'),
 	// поле ввода промокода 
@@ -114,7 +142,6 @@ let calc = () => {
 		promocodeWord = '',
 		totalPrice = ''; // итоговое значение общей суммы	
 	
-
 	calcPrice.innerHTML = totalPrice;
 	
 	document.body.addEventListener('input', e => {
@@ -142,33 +169,6 @@ let calc = () => {
 		}
 
 	});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -356,7 +356,7 @@ let mainSlider = () => {
 
 	// через интервал запускается смена фото
 	let timerMainSlades = () => {
-		setInterval(plusMainSlides, 4000);
+		setInterval(plusMainSlides, 10000);
 	};
 	timerMainSlades();
 
@@ -501,8 +501,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	// Вызывается модальное окно при нажатии на "Подробнее об услуге"
 		modal = __webpack_require__(/*! ./parts/modal.js */ "./src/js/parts/modal.js"),
 		feedbackSlider = __webpack_require__(/*! ./parts/feedbackSlider.js */ "./src/js/parts/feedbackSlider.js"),
-		calc = __webpack_require__(/*! ./parts/calc.js */ "./src/js/parts/calc.js");
-
+		calc = __webpack_require__(/*! ./parts/calc.js */ "./src/js/parts/calc.js"),
+		blockLoading = __webpack_require__(/*! ./parts/blockLoading.js */ "./src/js/parts/blockLoading.js");
 
 
 
@@ -510,7 +510,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	modal();
 	feedbackSlider();
 	calc();
-
+	blockLoading();
 });
 
 

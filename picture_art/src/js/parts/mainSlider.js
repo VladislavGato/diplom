@@ -69,7 +69,7 @@ let mainSlider = () => {
 
 	// через интервал запускается смена фото
 	let timerMainSlades = () => {
-		setInterval(plusMainSlides, 4000);
+		setInterval(plusMainSlides, 10000);
 	};
 	timerMainSlades();
 

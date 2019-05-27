@@ -1,10 +1,7 @@
 let calc = () => {
-
-	
 	//  селекты калькулятора обязательные 
 	let size = document.getElementById('size'),
 		material = document.getElementById('material'),
-
 	// селектор опциональный
 		options = document.getElementById('options'),
 	// поле ввода промокода 
@@ -19,7 +16,6 @@ let calc = () => {
 		promocodeWord = '',
 		totalPrice = ''; // итоговое значение общей суммы	
 	
-
 	calcPrice.innerHTML = totalPrice;
 	
 	document.body.addEventListener('input', e => {
@@ -47,33 +43,6 @@ let calc = () => {
 		}
 
 	});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
