@@ -7,13 +7,16 @@ window.addEventListener('DOMContentLoaded', () => {
 		modal = require('./parts/modal.js'),
 		feedbackSlider = require('./parts/feedbackSlider.js'),
 		calc = require('./parts/calc.js'),
-		blockLoading = require('./parts/blockLoading.js');
+		blockLoading = require('./parts/blockLoading.js'),
+		accordion = require('./parts/accordion.js');
 
 
 
+		
 	mainSlider();
 	modal();
 	feedbackSlider();
 	calc();
 	blockLoading();
+	accordion();
 });

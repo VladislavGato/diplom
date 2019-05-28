@@ -1724,3 +1724,37 @@ h4 {
     width: 25rem;
   }
 }
+
+
+
+
+/* .quest.active,
+.quest:hover {
+  background-color: rgb(255, 239, 239);
+  border-radius: 10px;
+  padding: 4px;
+} */
+
+/* .accordion-block.show {
+  display: block;
+} */
+
+
+.accordion-block {
+  display: none;
+}
+.quest:hover {
+  background-color: rgb(255, 239, 239);
+  border-radius: 10px;
+  padding: 4px;
+}
+.quest:visited {
+  color: #f00;
+  /* Цвет активной ссылки */
+}
+.accordion-active+.accordion-block{
+  display: block;
+  border-radius: 25px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
