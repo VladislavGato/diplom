@@ -170,6 +170,52 @@ module.exports = blockLoading;
 
 /***/ }),
 
+/***/ "./src/js/parts/burger.js":
+/*!********************************!*\
+  !*** ./src/js/parts/burger.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+let burger = () => {
+	// иконка бургер меню
+	let burgerIcon = document.querySelector('.burger'),
+	// раскрываемое бургер меню
+		burgerMenu = document.querySelectorAll('.burger-menu')[0];
+	// состояние бургер-меню
+	let burgerIndex = 0;
+
+
+// На планшетной версии (768 и меньше ширина) при клике на гамбургер - должно показываться подменю.
+	burgerIcon.addEventListener('click', () => {
+		// console.log('меню клик');
+		// console.log(window.innerWidth);
+
+		if (window.innerWidth <= 768 && burgerIndex == 0) {
+			console.log('условия сработали');
+			burgerMenu.style.display = 'block';
+			burgerIndex = 1;		
+		} else {
+			burgerMenu.style.display = 'none';
+			burgerIndex = 0;
+		}
+	});
+
+	//  Если человек разворачивает планшет и ширина становится больше - оно скрывается.
+	window.onresize = function () {
+		// console.log('текущая ширина экрана');
+		if (window.innerWidth > 768) {
+			burgerMenu.style.display = 'none';
+			burgerIndex = 0;
+		}
+	};
+
+};
+
+module.exports = burger;
+
+/***/ }),
+
 /***/ "./src/js/parts/calc.js":
 /*!******************************!*\
   !*** ./src/js/parts/calc.js ***!
@@ -556,7 +602,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		feedbackSlider = __webpack_require__(/*! ./parts/feedbackSlider.js */ "./src/js/parts/feedbackSlider.js"),
 		calc = __webpack_require__(/*! ./parts/calc.js */ "./src/js/parts/calc.js"),
 		blockLoading = __webpack_require__(/*! ./parts/blockLoading.js */ "./src/js/parts/blockLoading.js"),
-		accordion = __webpack_require__(/*! ./parts/accordion.js */ "./src/js/parts/accordion.js");
+		accordion = __webpack_require__(/*! ./parts/accordion.js */ "./src/js/parts/accordion.js"),
+		burger = __webpack_require__(/*! ./parts/burger.js */ "./src/js/parts/burger.js");
 
 
 
@@ -567,6 +614,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	calc();
 	blockLoading();
 	accordion();
+	burger();
 });
 
 

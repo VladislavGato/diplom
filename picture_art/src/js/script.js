@@ -8,7 +8,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		feedbackSlider = require('./parts/feedbackSlider.js'),
 		calc = require('./parts/calc.js'),
 		blockLoading = require('./parts/blockLoading.js'),
-		accordion = require('./parts/accordion.js');
+		accordion = require('./parts/accordion.js'),
+		burger = require('./parts/burger.js');
 
 
 
@@ -19,4 +20,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	calc();
 	blockLoading();
 	accordion();
+	burger();
 });
