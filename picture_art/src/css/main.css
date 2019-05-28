@@ -199,7 +199,7 @@ h4 {
   padding: 2rem;
 }
 .header .burger-menu li:hover {
-  backgrund-color: #eed4d2;
+  background-color: #eed4d2;
 }
 .header .burger-menu li a {
   color: inherit;
@@ -639,6 +639,7 @@ h4 {
 .portfolio-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;  
 }
 .portfolio-block {
   width: 20%;
@@ -1740,21 +1741,33 @@ h4 {
 } */
 
 
+/* /////// */
+
 .accordion-block {
   display: none;
 }
+
 .quest:hover {
   background-color: rgb(255, 239, 239);
   border-radius: 10px;
   padding: 4px;
-}
+} 
+
+/* Цвет активной ссылки */
 .quest:visited {
   color: #f00;
-  /* Цвет активной ссылки */
 }
+
 .accordion-active+.accordion-block{
   display: block;
   border-radius: 25px;
   margin-top: 2rem;
   margin-bottom: 1rem;
+}
+
+
+/* /////// */
+
+.hide-item {
+  display: none;
 }

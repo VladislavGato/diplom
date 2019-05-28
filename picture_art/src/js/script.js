@@ -9,7 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		calc = require('./parts/calc.js'),
 		blockLoading = require('./parts/blockLoading.js'),
 		accordion = require('./parts/accordion.js'),
-		burger = require('./parts/burger.js');
+		burger = require('./parts/burger.js'),
+		filter = require('./parts/filter.js');
 
 
 
@@ -21,4 +22,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	blockLoading();
 	accordion();
 	burger();
+	filter();
 });
