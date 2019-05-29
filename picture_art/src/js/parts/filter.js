@@ -1,12 +1,12 @@
 let filter = () => {
 	// поле с меню
-	let portfolioMenu = document.querySelector('.portfolio-menu');
+	let portfolioMenu = document.querySelector('.portfolio-menu'),
 	// пункты меню
-	let iconPortfolio = document.querySelectorAll('.icon-portfolio');
+	iconPortfolio = document.querySelectorAll('.icon-portfolio'),
 	// сами блоки с картинками
-	let portfolioBlock = document.querySelectorAll('.portfolio-block');
+	portfolioBlock = document.querySelectorAll('.portfolio-block'),
 	// блок с вариантом когда нет совпадений
-	let portfolioNo = document.querySelector('.portfolio-no');
+	portfolioNo = document.querySelector('.portfolio-no');
 	// portfolioBlock.forEach((item) => item.style.display = 'none');
 	// iconPortfolio.forEach((item) => item.style.display = 'none');
 	// portfolioNo.style.display = 'block';
