@@ -39,7 +39,10 @@ let forms = () => {
 	let
 	//  form = document.getElementsByClassName('main-form')[0], // форма в модальном окне
 	// formBottom = document.getElementById('form'), // контактная форма
-	input = document.getElementsByTagName('input'),  // все input'ы        
+	input = document.getElementsByTagName('input'),  // все input'ы    
+	option = document.getElementsByTagName('option'), // все input'ы    
+	select = document.getElementsByTagName('select'), // все input'ы    
+
 	
 	// создадим новый div на странице
 	statusMessage = document.createElement('div');
@@ -75,11 +78,15 @@ let forms = () => {
 						reject(); // ''Что-то пошло не так...'                 
 					}
 				});
-
+// console.log(data);
 				////////// вариант для JSON 
 				let obj = {}; // 
+
 				data.forEach(function (value, key) { // берем все данные из formData и помещаем в obj
 					obj[key] = value;
+
+					console.log(obj[key]);
+
 				});
 				// превращаем обычные JS объекты в JSON формат
 				let json = JSON.stringify(obj); 
@@ -96,7 +103,12 @@ let forms = () => {
 		postData(formData)
 			.then(() => statusMessage.innerHTML = message.loading)
 			.then(() => statusMessage.innerHTML = message.success)
-			.catch(() => statusMessage.innerHTML = message.failure)
+			.catch(
+				() => statusMessage.innerHTML = message.failure
+				
+
+
+				)
 			.then(clearInput);
 
 	};
