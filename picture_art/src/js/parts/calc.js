@@ -23,8 +23,8 @@ let calc = () => {
 		// console.log(size.value);
 		// console.log(material.value);
 		// console.log(options.value);
-		console.log(promocode.value);
-		console.log(promocodeSum);
+		// console.log(promocode.value);
+		// console.log(promocodeSum);
 		promocodeSum = 1;
 
 		sizeSum = +size.value;
