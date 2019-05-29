@@ -452,30 +452,24 @@ module.exports = filter;
 let forms = () => {
 
 
-	// объект с сообщениями, с различными состояниями нашего запроса
-	let message = {
-		loading: 'Загрузка...', // будет показываться пользователю когда наш запрос ещё не обработался
-		success: 'Спасибо! Скоро мы с вами свяжемся!',
-		failure: 'Что-то пошло не так...' //если сервер не отвечает
-	};
-
-
+	
+	
 	//валидация input в поле телефона и калькулятор
 	document.body.addEventListener('input', e => {
-
+		
 		// поле ввода телефона
 		if (e.target.getAttribute('name') === 'phone') {
 			e.target.value = '+' + e.target.value.replace(/[^\d]/g, '').slice(0, 11);
 			(e.target.value.length == 2) ? e.target.value = '+7' : '';
 			(e.target.value.length == 1) ? e.target.value = '' : '';
 		}
-			
+		
 		// поле ввода имени (предпологается ввод только имени без фамиилии)
 		if (e.target.getAttribute('name') === 'name') {
 			// только: русские буквы в любом регистре
 			e.target.value = e.target.value.replace(/[^\А-Яа-яЁё]/g, '').slice(0, 16);
 		}
-
+		
 		// поле ввода сообения
 		if (e.target.getAttribute('name') === 'message') {
 			// только: русские буквы в любом регистре, пробелы, цифры и символы . , : ; - + = ( )
@@ -483,19 +477,25 @@ let forms = () => {
 			e.target.value = e.target.value.replace(/[^\А-Яа-яЁё\s\d\.\,]/g, '').slice(0, 120);
 		}
 	});
-
+	
 	////////////////////////////////////////////////////////////////////////
-
-
+	// объект с сообщениями, с различными состояниями нашего запроса
+	let message = {
+		loading: 'Отпрака...', // будет показываться пользователю когда наш запрос ещё не обработался
+		success: 'Отправлено. Спасибо! Скоро мы с вами свяжемся!',
+		failure: 'Ошибка...' //если сервер не отвечает
+	};
+	
+	
 	let
 	//  form = document.getElementsByClassName('main-form')[0], // форма в модальном окне
-			// formBottom = document.getElementById('form'), // контактная форма
-			input = document.getElementsByTagName('input'),  // все input'ы        
-
-			// создадим новый div на странице
-			statusMessage = document.createElement('div');
-			// добавим к переменной класс
-			statusMessage.classList.add('status');
+	// formBottom = document.getElementById('form'), // контактная форма
+	input = document.getElementsByTagName('input'),  // все input'ы        
+	
+	// создадим новый div на странице
+	statusMessage = document.createElement('div');
+	// добавим к переменной класс
+	statusMessage.classList.add('status');
 	// 
 
 
@@ -533,8 +533,8 @@ let forms = () => {
 					obj[key] = value;
 				});
 				// превращаем обычные JS объекты в JSON формат
-				let json = JSON.stringify(obj); // получаем переменную со всеми данными в формате JSON, его мы и отправляем на сервер
-				request.send(json); // отправляет запрос на сервер
+				let json = JSON.stringify(obj); 
+				request.send(json);
 			})
 		}
 
@@ -548,7 +548,7 @@ let forms = () => {
 			.then(() => statusMessage.innerHTML = message.loading)
 			.then(() => statusMessage.innerHTML = message.success)
 			.catch(() => statusMessage.innerHTML = message.failure)
-			.then(clearInput)
+			.then(clearInput);
 
 	};
 
@@ -558,17 +558,10 @@ let forms = () => {
 
 
 	document.body.addEventListener('submit', (event) => {
-		let target = event.target; // event. где произошло событие
-		event.preventDefault(); // чтобы не перезагружалась страница отменим стандартное поведение
-
+		let target = event.target;
+		event.preventDefault();
 		sendForm(target);
-
-		// console.log(target);
 	});
-
-
-
-
 
 
 
