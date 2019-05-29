@@ -442,6 +442,35 @@ module.exports = filter;
 
 /***/ }),
 
+/***/ "./src/js/parts/forms.js":
+/*!*******************************!*\
+  !*** ./src/js/parts/forms.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+let forms = () => {
+
+// объект с сообщениями, с различными состояниями нашего запроса
+let message = {
+	loading: 'Загрузка...', // будет показываться пользователю когда наш запрос ещё не обработался
+	success: 'Спасибо! Скоро мы с вами свяжемся!',
+	failure: 'Что-то пошло не так...' //если сервер не отвечает
+};
+
+
+
+
+
+
+
+
+};
+
+module.exports = forms;
+
+/***/ }),
+
 /***/ "./src/js/parts/mainSlider.js":
 /*!************************************!*\
   !*** ./src/js/parts/mainSlider.js ***!
@@ -919,7 +948,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		accordion = __webpack_require__(/*! ./parts/accordion.js */ "./src/js/parts/accordion.js"),
 		burger = __webpack_require__(/*! ./parts/burger.js */ "./src/js/parts/burger.js"),
 		filter = __webpack_require__(/*! ./parts/filter.js */ "./src/js/parts/filter.js"),
-		picInHover = __webpack_require__(/*! ./parts/picInHover.js */ "./src/js/parts/picInHover.js");
+		picInHover = __webpack_require__(/*! ./parts/picInHover.js */ "./src/js/parts/picInHover.js"),
+		forms = __webpack_require__(/*! ./parts/forms.js */ "./src/js/parts/forms.js");
 
 
 
@@ -933,6 +963,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	burger();
 	filter();
 	picInHover();
+	forms();
 });
 
 

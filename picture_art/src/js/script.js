@@ -11,7 +11,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		accordion = require('./parts/accordion.js'),
 		burger = require('./parts/burger.js'),
 		filter = require('./parts/filter.js'),
-		picInHover = require('./parts/picInHover.js');
+		picInHover = require('./parts/picInHover.js'),
+		forms = require('./parts/forms.js');
 
 
 
@@ -25,4 +26,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	burger();
 	filter();
 	picInHover();
+	forms();
 });
